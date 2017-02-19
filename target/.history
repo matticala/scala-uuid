@@ -1,5 +1,0 @@
-sbt -version
-sbt --version
-sbt about
-:quit
-exit
