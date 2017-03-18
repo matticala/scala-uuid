@@ -2,11 +2,11 @@ package com.github.matticala.scala
 package util
 
 import java.nio.charset.StandardCharsets
-import java.security.{MessageDigest, SecureRandom}
+import java.security.{ MessageDigest, SecureRandom }
 
 import scala.util.Try
 
-sealed class UUID (val msb: Long, val lsb: Long) extends Serializable with Equals with Comparable[UUID] {
+sealed class UUID(val msb: Long, val lsb: Long) extends Serializable with Equals with Comparable[UUID] {
 
   import UUID.Private.hex
 
@@ -87,10 +87,10 @@ object UUID {
 
     private lazy val generator: SecureRandom = new SecureRandom()
 
-    def getRandomBytes: Bytes = generator.nextBytes(2*BYTES)
+    def getRandomBytes: Bytes = generator.nextBytes(2 * BYTES)
 
     def fromBytes(array: Bytes): UUID = {
-      val (msb, lsb) = array.take(2*BYTES).splitAt(BYTES)
+      val (msb, lsb) = array.take(2 * BYTES).splitAt(BYTES)
       new UUID(bytes2long(msb), bytes2long(lsb))
     }
 

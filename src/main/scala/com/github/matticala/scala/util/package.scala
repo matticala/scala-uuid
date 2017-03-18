@@ -1,8 +1,5 @@
-package com.github
-package matticala
-package scala
+package com.github.matticala.scala
 
-import java.lang.Long.BYTES
 import java.util.Random
 
 package object util {
@@ -10,6 +7,9 @@ package object util {
   type Bytes = Array[Byte]
 
   implicit class ExtLong(val underlying: Long) extends AnyVal {
+
+    import java.lang.Long.BYTES
+
     def toBytes: Bytes = Array.tabulate(BYTES)(i ⇒ ((underlying >> (BYTES - 1 - i) * BYTES) & 0xff).toByte)
   }
 
@@ -20,7 +20,6 @@ package object util {
       underlying.nextBytes(bytes)
       bytes
     }
-
   }
 
 }
